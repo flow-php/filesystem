@@ -1,11 +1,4 @@
-# Filesystem
-
-Read and write remote/local files, the difference between this and other filesystem abstractions is: 
-
-- reading files by byte ranges
-- streaming files to remote locations in chunks 
-
-Flow Filesystem was designed specifically for the ETL framework. 
+# Dremel
 
 ## Installation
 
