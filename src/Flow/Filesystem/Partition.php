@@ -6,12 +6,11 @@ namespace Flow\Filesystem;
 
 use Flow\ETL\Exception\InvalidArgumentException;
 use Flow\ETL\Row;
-use Flow\ETL\Row\Entry\{ArrayEntry,
+use Flow\ETL\Row\Entry\{
     DateTimeEntry,
     JsonEntry,
     ListEntry,
     MapEntry,
-    ObjectEntry,
     StructureEntry,
     XMLElementEntry,
     XMLEntry};
@@ -82,7 +81,7 @@ final class Partition
 
         return match ($entry::class) {
             DateTimeEntry::class => $entry->value()?->format('Y-m-d'),
-            XMLEntry::class, XMLElementEntry::class, JsonEntry::class, ObjectEntry::class, ListEntry::class, StructureEntry::class, MapEntry::class, ArrayEntry::class => throw new InvalidArgumentException($entry::class . ' can\'t be used as a partition'),
+            XMLEntry::class, XMLElementEntry::class, JsonEntry::class, ListEntry::class, StructureEntry::class, MapEntry::class => throw new InvalidArgumentException($entry::class . ' can\'t be used as a partition'),
             default => $entry->toString(),
         };
     }
