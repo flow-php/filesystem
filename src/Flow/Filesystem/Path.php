@@ -168,6 +168,11 @@ final class Path
         return ResourceContext::from($this);
     }
 
+    public function endsWith(string $string) : bool
+    {
+        return \str_ends_with($this->path, $string);
+    }
+
     /**
      * @psalm-assert-if-true string $this->extension
      */
@@ -295,12 +300,41 @@ final class Path
         );
     }
 
+    public function rootDirectoryName() : ?string
+    {
+        $pathParts = \explode(DIRECTORY_SEPARATOR, \ltrim($this->path(), DIRECTORY_SEPARATOR));
+
+        if (\count($pathParts) === 1) {
+            return null;
+        }
+
+        return isset($pathParts[0]) && $pathParts[0] !== '' ? $pathParts[0] : null;
+    }
+
     public function setExtension(string $extension) : self
     {
         return new self(
             $this->protocol->scheme() . $this->parentDirectory()->uri() . DIRECTORY_SEPARATOR . $this->filename . '.' . $extension,
             $this->options
         );
+    }
+
+    public function skipDirectories(int $count) : ?self
+    {
+        if ($count < 0) {
+            throw new \InvalidArgumentException('The number of folders to skip must be non-negative.');
+        }
+
+        $pathParts = \explode(DIRECTORY_SEPARATOR, \ltrim($this->path(), DIRECTORY_SEPARATOR));
+        $remainingParts = \array_slice($pathParts, $count);
+
+        if (!\count($remainingParts)) {
+            return null;
+        }
+
+        $newPath = \implode(DIRECTORY_SEPARATOR, $remainingParts);
+
+        return new self($this->protocol->scheme() . $newPath, $this->options);
     }
 
     public function staticPart() : self
