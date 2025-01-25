@@ -8,7 +8,7 @@ use function Flow\ETL\DSL\{all, lit, ref};
 use function Flow\Filesystem\DSL\native_local_filesystem;
 use Flow\ETL\Filesystem\{ScalarFunctionFilter};
 use Flow\ETL\PHP\Type\{AutoCaster, Caster};
-use Flow\ETL\Row\Factory\NativeEntryFactory;
+use Flow\ETL\Row\EntryFactory;
 use Flow\Filesystem\Path\Filter\KeepAll;
 use Flow\Filesystem\{FileStatus, Path, Stream\NativeLocalDestinationStream};
 
@@ -197,7 +197,7 @@ TXT
                                 ref('date')->cast('date')->lessThan(lit(new \DateTimeImmutable('2022-01-04')))
                             )
                         ),
-                        new NativeEntryFactory(),
+                        new EntryFactory(),
                         new AutoCaster(Caster::default())
                     )
                 )
@@ -245,7 +245,7 @@ TXT
                 (native_local_filesystem())
                     ->list(
                         new Path(__DIR__ . '/Fixtures/partitioned/**/*.txt'),
-                        new ScalarFunctionFilter(ref('partition_01')->equals(lit('b')), new NativeEntryFactory(), new AutoCaster(Caster::default()))
+                        new ScalarFunctionFilter(ref('partition_01')->equals(lit('b')), new EntryFactory(), new AutoCaster(Caster::default()))
                     )
             )
         );
