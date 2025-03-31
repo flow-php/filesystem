@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Flow\Filesystem\DSL;
 
 use Flow\ETL\Attribute\{DocumentationDSL, Module, Type};
-use Flow\Filesystem\Local\NativeLocalFilesystem;
 use Flow\Filesystem\{Filesystem,
     FilesystemTable,
     Local\MemoryFilesystem,
@@ -14,6 +13,7 @@ use Flow\Filesystem\{Filesystem,
     Partitions,
     Path,
     Protocol};
+use Flow\Filesystem\Local\NativeLocalFilesystem;
 
 #[DocumentationDSL(module: Module::FILESYSTEM, type: Type::HELPER)]
 function protocol(string $protocol) : Protocol

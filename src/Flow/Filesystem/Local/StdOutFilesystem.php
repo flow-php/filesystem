@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Flow\Filesystem\Local;
 
+use Flow\Filesystem\{DestinationStream, FileStatus, Filesystem, Path, Protocol, SourceStream};
 use Flow\Filesystem\Exception\RuntimeException;
 use Flow\Filesystem\Local\StdOut\StdOutDestinationStream;
 use Flow\Filesystem\Path\Filter;
 use Flow\Filesystem\Path\Filter\KeepAll;
-use Flow\Filesystem\{DestinationStream, FileStatus, Filesystem, Path, Protocol, SourceStream};
 
 final readonly class StdOutFilesystem implements Filesystem
 {

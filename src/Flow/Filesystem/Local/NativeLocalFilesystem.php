@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Flow\Filesystem\Local;
 
+use Flow\Filesystem\{DestinationStream, FileStatus, Filesystem, Path, Path\Filter, Protocol, SourceStream};
 use Flow\Filesystem\Exception\{InvalidArgumentException, RuntimeException};
 use Flow\Filesystem\Stream\{NativeLocalDestinationStream, NativeLocalSourceStream};
-use Flow\Filesystem\{DestinationStream, FileStatus, Filesystem, Path, Path\Filter, Protocol, SourceStream};
 use Webmozart\Glob\Glob;
 
 /**

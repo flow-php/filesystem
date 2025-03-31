@@ -9,8 +9,8 @@ use function Flow\Filesystem\DSL\native_local_filesystem;
 use Flow\ETL\Filesystem\{ScalarFunctionFilter};
 use Flow\ETL\PHP\Type\{AutoCaster, Caster};
 use Flow\ETL\Row\EntryFactory;
-use Flow\Filesystem\Path\Filter\KeepAll;
 use Flow\Filesystem\{FileStatus, Path, Stream\NativeLocalDestinationStream};
+use Flow\Filesystem\Path\Filter\KeepAll;
 
 final class NativeLocalFilesystemTest extends NativeLocalFilesystemTestCase
 {

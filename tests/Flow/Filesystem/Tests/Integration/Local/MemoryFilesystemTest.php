@@ -9,9 +9,9 @@ use function Flow\Filesystem\DSL\{memory_filesystem, path_memory};
 use Flow\ETL\Filesystem\{ScalarFunctionFilter};
 use Flow\ETL\PHP\Type\{AutoCaster, Caster};
 use Flow\ETL\Row\EntryFactory;
-use Flow\Filesystem\Path\Filter\KeepAll;
 use Flow\Filesystem\{FileStatus,
     Tests\Integration\NativeLocalFilesystemTestCase};
+use Flow\Filesystem\Path\Filter\KeepAll;
 
 final class MemoryFilesystemTest extends NativeLocalFilesystemTestCase
 {

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Flow\Filesystem\Local;
 
-use Flow\Filesystem\Exception\RuntimeException;
-use Flow\Filesystem\Path\Filter;
-use Flow\Filesystem\Path\Filter\KeepAll;
 use Flow\Filesystem\{DestinationStream,
     FileStatus,
     Filesystem,
@@ -14,6 +11,9 @@ use Flow\Filesystem\{DestinationStream,
     Path,
     Protocol,
     SourceStream};
+use Flow\Filesystem\Exception\RuntimeException;
+use Flow\Filesystem\Path\Filter;
+use Flow\Filesystem\Path\Filter\KeepAll;
 
 final readonly class MemoryFilesystem implements Filesystem
 {
