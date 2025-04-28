@@ -12,11 +12,14 @@ use Flow\ETL\Exception\{InvalidArgumentException, RuntimeException};
  */
 final readonly class Partitions implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /**
+     * @var array<int, Partition>
+     */
     private array $partitions;
 
     public function __construct(Partition ...$partitions)
     {
-        $this->partitions = $partitions;
+        $this->partitions = \array_values($partitions);
     }
 
     public function count() : int
@@ -70,6 +73,9 @@ final readonly class Partitions implements \ArrayAccess, \Countable, \IteratorAg
         return \array_key_exists($offset, $this->partitions);
     }
 
+    /**
+     * @return Partition
+     */
     public function offsetGet(mixed $offset) : mixed
     {
         return $this->partitions[$offset];
