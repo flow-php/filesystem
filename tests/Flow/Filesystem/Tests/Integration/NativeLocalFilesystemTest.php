@@ -7,10 +7,10 @@ namespace Flow\Filesystem\Tests\Integration;
 use function Flow\ETL\DSL\{all, lit, ref};
 use function Flow\Filesystem\DSL\native_local_filesystem;
 use Flow\ETL\Filesystem\{ScalarFunctionFilter};
-use Flow\ETL\PHP\Type\{AutoCaster, Caster};
 use Flow\ETL\Row\EntryFactory;
 use Flow\Filesystem\{FileStatus, Path, Stream\NativeLocalDestinationStream};
 use Flow\Filesystem\Path\Filter\KeepAll;
+use Flow\Types\Type\{AutoCaster};
 
 final class NativeLocalFilesystemTest extends NativeLocalFilesystemTestCase
 {
@@ -198,7 +198,7 @@ TXT
                             )
                         ),
                         new EntryFactory(),
-                        new AutoCaster(Caster::default())
+                        new AutoCaster()
                     )
                 )
         );
@@ -245,7 +245,7 @@ TXT
                 (native_local_filesystem())
                     ->list(
                         new Path(__DIR__ . '/Fixtures/partitioned/**/*.txt'),
-                        new ScalarFunctionFilter(ref('partition_01')->equals(lit('b')), new EntryFactory(), new AutoCaster(Caster::default()))
+                        new ScalarFunctionFilter(ref('partition_01')->equals(lit('b')), new EntryFactory(), new AutoCaster())
                     )
             )
         );
