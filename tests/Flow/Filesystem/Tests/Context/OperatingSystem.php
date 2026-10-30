@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Flow\Filesystem\Tests;
+namespace Flow\Filesystem\Tests\Context;
 
 use const PHP_OS_FAMILY;
 
-trait OperatingSystem
+final class OperatingSystem
 {
-    protected function isUnix(): bool
+    public static function isUnix(): bool
     {
         return PHP_OS_FAMILY !== 'Windows';
     }
 
-    protected function isWindows(): bool
+    public static function isWindows(): bool
     {
         return PHP_OS_FAMILY === 'Windows';
     }
